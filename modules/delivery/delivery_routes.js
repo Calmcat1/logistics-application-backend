@@ -5,8 +5,8 @@ const router = express.Router();
 
 router.post('/add-delivery', createDelivery)
 router.get('/deliveries', getAllDeliveries);
-router.get('/orders/user/:name', getDeliveriesByDriverName);
-router.delete('/orders/:id', deleteDelivery);
-router.patch('/update-delivery-status', updateDeliveryStatus)
+router.get('/deliveries/user/:name', getDeliveriesByDriverName);
+router.delete('/deliveries/:id', deleteDelivery);
+router.patch('/deliveries/:id/status', updateDeliveryStatus)
 
 export default router;
