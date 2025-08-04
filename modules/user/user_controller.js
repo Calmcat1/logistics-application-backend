@@ -43,3 +43,31 @@ export const loginUser = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+// get all users
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.findAll();
+    res.status(200).json(users);
+  } catch (err) {
+    console.error('Error fetching users:', err.message);
+    res.status(500).json({ error: 'Failed to fetch users' });
+  }
+}
+
+// Delete a specific user (by user_id)
+export const deleteUser = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await User.destroy({ where: { id: id } });
+
+    if (result === 0) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.status(200).json({ message: 'User deleted successfully' });
+  } catch (err) {
+    console.error('Error deleting User:', err.message);
+    res.status(500).json({ error: 'Failed to delete user' });
+  }
+};
