@@ -4,7 +4,8 @@ import Delivery from './delivery_model.js';
 export const createDelivery = async (req, res) => {
   const {
     delivery_driver_name,
-    delivery_driver_email,
+    delivery_customer_name,
+    delivery_destination,
     delivery_ETA,
     delivery_status
   } = req.body;
@@ -12,7 +13,8 @@ export const createDelivery = async (req, res) => {
   try {
     const newDelivery = await Delivery.create({
       delivery_driver_name,
-      delivery_driver_email,
+      delivery_customer_name,
+      delivery_destination,
       delivery_ETA,
       delivery_status
     });
